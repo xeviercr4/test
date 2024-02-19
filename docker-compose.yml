@@ -4,12 +4,17 @@ services:
     image: redis:latest
   db:
     image: postgres:15-alpine
+    container_name: postgres_db
+    restart: always
     volumes:
       - ./tmp/db:/var/lib/postgresql@15/data
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_ROOT_PASSWORD: ${POSTGRES_ROOT_PASSWORD}
       POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - ${POSTGRES_PORT}:5432
   web:
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
