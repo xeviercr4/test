@@ -1,0 +1,32 @@
+<%= form_with(model: movie_language) do |form| %>
+  <% if movie_language.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(movie_language.errors.count, "error") %> prohibited this movie_language from being saved:</h2>
+
+      <ul>
+        <% movie_language.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :movie_id, style: "display: block" %>
+    <%= form.text_field :movie_id %>
+  </div>
+
+  <div>
+    <%= form.label :language_id, style: "display: block" %>
+    <%= form.text_field :language_id %>
+  </div>
+
+  <div>
+    <%= form.label :language_role_id, style: "display: block" %>
+    <%= form.text_field :language_role_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

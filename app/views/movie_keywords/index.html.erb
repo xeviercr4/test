@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Movie keywords</h1>
+
+<div id="movie_keywords">
+  <% @movie_keywords.each do |movie_keyword| %>
+    <%= render movie_keyword %>
+    <p>
+      <%= link_to "Show this movie keyword", movie_keyword %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New movie keyword", new_movie_keyword_path %>

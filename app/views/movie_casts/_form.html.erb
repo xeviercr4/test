@@ -1,0 +1,42 @@
+<%= form_with(model: movie_cast) do |form| %>
+  <% if movie_cast.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(movie_cast.errors.count, "error") %> prohibited this movie_cast from being saved:</h2>
+
+      <ul>
+        <% movie_cast.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :movie_id, style: "display: block" %>
+    <%= form.text_field :movie_id %>
+  </div>
+
+  <div>
+    <%= form.label :person_id, style: "display: block" %>
+    <%= form.text_field :person_id %>
+  </div>
+
+  <div>
+    <%= form.label :character_name, style: "display: block" %>
+    <%= form.text_field :character_name %>
+  </div>
+
+  <div>
+    <%= form.label :gender_id, style: "display: block" %>
+    <%= form.text_field :gender_id %>
+  </div>
+
+  <div>
+    <%= form.label :cast_order, style: "display: block" %>
+    <%= form.number_field :cast_order %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

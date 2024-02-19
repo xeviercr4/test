@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Language roles</h1>
+
+<div id="language_roles">
+  <% @language_roles.each do |language_role| %>
+    <%= render language_role %>
+    <p>
+      <%= link_to "Show this language role", language_role %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New language role", new_language_role_path %>

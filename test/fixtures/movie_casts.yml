@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  movie: one
+  person: one
+  character_name: MyString
+  gender: one
+  cast_order: 1
+
+two:
+  movie: two
+  person: two
+  character_name: MyString
+  gender: two
+  cast_order: 1

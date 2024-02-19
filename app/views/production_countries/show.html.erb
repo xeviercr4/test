@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @production_country %>
+
+<div>
+  <%= link_to "Edit this production country", edit_production_country_path(@production_country) %> |
+  <%= link_to "Back to production countries", production_countries_path %>
+
+  <%= button_to "Destroy this production country", @production_country, method: :delete %>
+</div>

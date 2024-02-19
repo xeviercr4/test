@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Production countries</h1>
+
+<div id="production_countries">
+  <% @production_countries.each do |production_country| %>
+    <%= render production_country %>
+    <p>
+      <%= link_to "Show this production country", production_country %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New production country", new_production_country_path %>

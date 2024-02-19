@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @movie_keyword %>
+
+<div>
+  <%= link_to "Edit this movie keyword", edit_movie_keyword_path(@movie_keyword) %> |
+  <%= link_to "Back to movie keywords", movie_keywords_path %>
+
+  <%= button_to "Destroy this movie keyword", @movie_keyword, method: :delete %>
+</div>

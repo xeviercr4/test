@@ -1,0 +1,22 @@
+<%= form_with(model: language_role) do |form| %>
+  <% if language_role.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(language_role.errors.count, "error") %> prohibited this language_role from being saved:</h2>
+
+      <ul>
+        <% language_role.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :language_role, style: "display: block" %>
+    <%= form.text_field :language_role %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

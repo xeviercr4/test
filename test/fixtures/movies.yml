@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  budget: 1
+  homepage: MyString
+  overview: MyString
+  popularity: 9.99
+  release_date: 2024-02-19
+  revenue: 
+  runtime: 1
+  movie_status: MyString
+  tagline: MyString
+  vote_average: 9.99
+  vote_count: 1
+
+two:
+  title: MyString
+  budget: 1
+  homepage: MyString
+  overview: MyString
+  popularity: 9.99
+  release_date: 2024-02-19
+  revenue: 
+  runtime: 1
+  movie_status: MyString
+  tagline: MyString
+  vote_average: 9.99
+  vote_count: 1
