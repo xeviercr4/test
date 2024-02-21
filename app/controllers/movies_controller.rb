@@ -10,7 +10,7 @@ class MoviesController < ApplicationController
     # @movies = Movie.joins(:movie_genres).where(["genre_id = ?", "#{params[:search]}"]) #if @movies.count != 0
     # Category.joins(articles: [{ comments: :guest }, :tags])
 
-     @movies = Movie.includes([movie_genres: :genre], [movie_languages: :language], [movie_casts: :person]).where(["title LIKE ?", "%#{params[:search]}"]).limit 10
+     @movies = Movie.includes([movie_genres: :genre], [movie_languages: :language], [movie_casts: :person]).where(["title LIKE ?", "%#{params[:search]}"]).page(params[:page])
 
 
   end
