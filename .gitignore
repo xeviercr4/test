@@ -32,3 +32,4 @@
 /.idea/*
 .idea/test.iml
 .idea/test.iml
+*.iml
