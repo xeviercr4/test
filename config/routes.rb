@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'movies#index'
+
   resources :production_countries
   resources :production_companies
   resources :people

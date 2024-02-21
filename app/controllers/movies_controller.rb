@@ -3,7 +3,16 @@ class MoviesController < ApplicationController
 
   # GET /movies
   def index
-    @movies = Movie.all
+    # @movies = Movie.all
+    # @movies = Movie.include(:movie_genres).where(["title LIKE ?", "%#{params[:search]}"])
+    # @movies = Movie.include(:movie_genre).joins(:genre).where(["genre_name LIKE ?", "%#{params[:search]}"]) if @movies.count != 0
+    # @movies = Movie.joins(movie_genres: :genre).where(["genre_name LIKE ?", "%#{params[:search]}"]) if @movies.count != 0
+    # @movies = Movie.joins(:movie_genres).where(["genre_id = ?", "#{params[:search]}"]) #if @movies.count != 0
+    # Category.joins(articles: [{ comments: :guest }, :tags])
+
+     @movies = Movie.includes([movie_genres: :genre], [movie_languages: :language], [movie_casts: :person]).where(["title LIKE ?", "%#{params[:search]}"]).limit 10
+
+
   end
 
   # GET /movies/1
