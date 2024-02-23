@@ -2,6 +2,8 @@
 
 <h1>Smarter Select Test</h1>
 
+<hr />
+
 <%= form_tag movies_path, :method => 'get' do  %>
   <%= text_field_tag :search, params[:search] %>
 
@@ -14,13 +16,17 @@
 
 <% end %>
 
+<hr />
 
 <div style="font-size: 2rem;">
   <%= paginate @movies %>
 </div>
 
+<hr />
 
 <%= link_to "New movie", new_movie_path %>
+
+<hr />
 
 <div id="movies">
   <% @movies.each do |movie| %>
@@ -28,6 +34,7 @@
     <p>
       <%= link_to "Show this movie", movie %>
     </p>
+    <hr />
   <% end %>
 </div>
 

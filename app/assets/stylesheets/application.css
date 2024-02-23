@@ -13,3 +13,31 @@
  *= require_tree .
  *= require_self
  */
+
+
+.column {
+    float: left;
+    width: 33.33%;
+}
+
+.column_image {
+    float: left;
+    width: 12%;
+}
+
+.column_center {
+    float: left;
+    width: 38%;
+}
+
+.column_rigth {
+    float: left;
+    width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
