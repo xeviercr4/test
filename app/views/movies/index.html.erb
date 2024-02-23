@@ -1,11 +1,19 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Movies</h1>
+<h1>Smarter Select Test</h1>
 
 <%= form_tag movies_path, :method => 'get' do  %>
   <%= text_field_tag :search, params[:search] %>
+
+    <% ['Name', 'Gender', 'Language', 'Movie Cast'].each do |criteria_option| %>
+    <%= radio_button_tag 'criteria', criteria_option, false %>
+    <%= label_tag criteria_option %>
+    <% end %>
+
   <%= submit_tag "Search"  %>
+
 <% end %>
+
 
 <div style="font-size: 2rem;">
   <%= paginate @movies %>
@@ -16,7 +24,7 @@
 
 <div id="movies">
   <% @movies.each do |movie| %>
-    <%= render movie %>
+    <%= render "movie_index", movie: movie %>
     <p>
       <%= link_to "Show this movie", movie %>
     </p>

@@ -3,16 +3,7 @@ class MoviesController < ApplicationController
 
   # GET /movies
   def index
-    # @movies = Movie.all
-    # @movies = Movie.include(:movie_genres).where(["title LIKE ?", "%#{params[:search]}"])
-    # @movies = Movie.include(:movie_genre).joins(:genre).where(["genre_name LIKE ?", "%#{params[:search]}"]) if @movies.count != 0
-    # @movies = Movie.joins(movie_genres: :genre).where(["genre_name LIKE ?", "%#{params[:search]}"]) if @movies.count != 0
-    # @movies = Movie.joins(:movie_genres).where(["genre_id = ?", "#{params[:search]}"]) #if @movies.count != 0
-    # Category.joins(articles: [{ comments: :guest }, :tags])
-
-     @movies = Movie.includes([movie_genres: :genre], [movie_languages: :language], [movie_casts: :person]).where(["title LIKE ?", "%#{params[:search]}"]).page(params[:page])
-
-
+     search
   end
 
   # GET /movies/1
@@ -64,4 +55,28 @@ class MoviesController < ApplicationController
     def movie_params
       params.require(:movie).permit(:title, :budget, :homepage, :overview, :popularity, :release_date, :revenue, :runtime, :movie_status, :tagline, :vote_average, :vote_count)
     end
+
+    def search
+
+      if params.has_key?(:criteria)
+         case params[:criteria]
+         when "Name"
+           @movies = Movie.includes([movie_genres: :genre], [movie_languages: :language], [movie_casts: :person], [movie_companies: :production_company]).where(["title LIKE ?", "%#{params[:search]}"]).page(params[:page])
+         when "Gender"
+           @movies = Movie.includes([movie_genres: :genre], [movie_languages: :language], [movie_casts: :person], [movie_companies: :production_company]).joins(movie_genres: :genre).where(["genre_name LIKE ?", "%#{params[:search]}"]).distinct(:title).page(params[:page])
+         when "Language"
+           @movies = Movie.includes([movie_genres: :genre], [movie_languages: :language], [movie_casts: :person], [movie_companies: :production_company]).joins(movie_languages: :language).where(["language_name LIKE ?", "%#{params[:search]}"]).distinct(:title).page(params[:page])
+         when "Movie Cast"
+           @movies = Movie.includes([movie_genres: :genre], [movie_languages: :language], [movie_casts: :person], [movie_companies: :production_company]).joins(movie_casts: :person).where(["person_name LIKE ?", "%#{params[:search]}"]).distinct(:title).page(params[:page])
+         else
+           @movies = Movie.all.includes([movie_genres: :genre], [movie_languages: :language], [movie_casts: :person], [movie_companies: :production_company]).page(params[:page])
+         end
+      else
+        @movies = Movie.all.includes([movie_genres: :genre], [movie_languages: :language], [movie_casts: :person], [movie_companies: :production_company]).page(params[:page])
+      end
+
+      @movies
+    end
+
+
 end

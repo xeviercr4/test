@@ -1,0 +1,48 @@
+<div id="<%= dom_id movie %>">
+  <p>
+    <strong>Movie Name:</strong>
+    <%= movie.title %>
+  </p>
+
+  <div>
+    <strong>Genres:</strong>
+    <% gender_list = "" %>
+    <% flag = movie.genres.last %>
+      <% movie.genres.each do |genre|  %>
+     <% gender_list += genre != flag ? "#{genre.genre_name},  " : "#{genre.genre_name}." %>
+  <% end  %>
+  <%= gender_list %>
+  </div>
+
+  <div>
+    <strong>Languages:</strong>
+    <% laguages_list = "" %>
+    <% flag = movie.movie_languages.last %>
+      <% movie.movie_languages.distinct(:language_id).each do |movie_language|  %>
+      <% laguages_list += movie_language.language != flag ? "#{movie_language.language.language_name},  " : "#{movie_language.language.language_name}." %>
+    <% end  %>
+    <%= laguages_list %>
+  </div>
+
+  <div>
+    <strong>Company:</strong>
+    <% companies_list = "" %>
+    <% flag = movie.movie_companies.last %>
+    <% movie.movie_companies.each do |company|  %>
+      <% companies_list += company != flag ? "#{company.production_company.company_name},  " : "#{company.production_company.company_name}." %>
+    <% end  %>
+    <%= companies_list %>
+  </div>
+
+  <div>
+    <strong>Cast:</strong>
+    <% people_list = "" %>
+    <% flag = movie.movie_casts.last %>
+    <% movie.movie_casts.each do |movie_cast|  %>
+      <% people_list += movie_cast != flag ? "#{movie_cast.person.person_name},  " : "#{movie_cast.person.person_name}." %>
+    <% end  %>
+    <%= people_list %>
+  </div>
+
+
+</div>
