@@ -1,24 +1,48 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+For run app is needed have installed Docker Desktop v4.27.2 on case of Mac users
 
-Things you may want to cover:
 
-* Ruby version
+For create a develop environment is necesary run this commands:
 
-* System dependencies
+- [x] docker-compose build
 
-* Configuration
+Then create a database:
 
-* Database creation
+- [x] docker-compose run web bash rails db:create
 
-* Database initialization
+Initialize database:
 
-* How to run the test suite
+- [x] docker-compose up -d
 
-* Services (job queues, cache servers, search engines, etc.)
+On this step is needed apply the backup movies_bk.sql over movies database
 
-* Deployment instructions
+> IMPORTANT
 
-* ...
+> You can use pgadmin4(https://www.pgadmin.org/download/) for apply, this is the config en local environment:
+
+> Config pgadmin4 locally:
+
+> - Select register server
+
+> Params
+
+> - host: 127.0.0.1
+> - port: 5432
+> - manintenace database: postgres
+> - username: postgres
+> - password: password
+
+>Server name is needed but its for free choice 
+
+Or it's possible with command line:
+
+- [x] docker cp ./movies_bk.sql postgres_db:/docker-entrypoint-initdb.d/movies_bk.sql
+- [x] docker exec -u postgres postgres_db pg_restore postgres -d movies -1 docker-entrypoint-initdb.d/movies_bk.sql
+ 
+Run environment and debug
+
+- [x]  docker-compose up -d && docker attach test-web-1
+
+
+
